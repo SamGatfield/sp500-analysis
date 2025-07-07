@@ -1,3 +1,4 @@
 __pycache__/
 *.pyc
 data/sp500_data.db
+progression.txt
