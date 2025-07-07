@@ -1,0 +1,4 @@
+Log here the progression and what my scripts actually do and mean in a business context.
+
+
+I began by exploring technical indicators to understand S&P 500 price behavior, then used those indicators to backtest a simple momentum-based strategy.
