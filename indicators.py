@@ -1,5 +1,6 @@
 import pandas as pd
 
+# Calculating 3 technical indicators 
 
 def sma_indicator(dataframe, day_lower, day_upper):
 
@@ -11,7 +12,7 @@ def sma_indicator(dataframe, day_lower, day_upper):
 
 
 def rsi_indicator(dataframe, days):
-    delta = dataframe["Close"].diff()
+    delta = dataframe["Close"].diff() # Change in close price between current and previous day
 
     gain = delta.clip(lower=0)
     loss = -delta.clip(upper=0)
@@ -29,7 +30,7 @@ def macd_indicator(dataframe):
 
     dataframe["MACD"] = exp_ma12 - exp_ma26
 
-    dataframe["Bullish"] = (dataframe["MACD"] > 0)
+    dataframe["Bullish"] = (dataframe["MACD"] > 0) # Returns boolean values and makes a new column in the data frame
     dataframe["Bearish"] = (dataframe["MACD"] < 0)
 
 

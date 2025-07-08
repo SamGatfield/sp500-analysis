@@ -6,7 +6,6 @@ from load_data import read_csv
 from indicators import sma_indicator, macd_indicator, rsi_indicator
 
 
-
 df = read_csv("data/sp 500.csv")
 
 sma_indicator(df, 20, 50)
@@ -22,6 +21,7 @@ df.set_index("Date", inplace=True)
 min_year = df.index.year.min()
 max_year = df.index.year.max()
 
+# Lets the user decide the dates they want to look at
 
 selected_years = st.slider(
     "Year range",
@@ -32,6 +32,8 @@ selected_years = st.slider(
 
 start_year, end_year = selected_years
 filtered_df = df[(df.index.year >= start_year) & (df.index.year <= end_year)]
+
+
 
 st.subheader("Filtered data preview")
 st.dataframe(filtered_df.tail(10))

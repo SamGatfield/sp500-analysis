@@ -2,8 +2,6 @@ import mplfinance as mpf
 
 from indicators import sma_indicator, rsi_indicator, macd_indicator
 
-
-
 def candle_plot(dataframe, start_year, end_year, s):
 
     dataframe = dataframe.iloc[::-1].reset_index(drop=True)

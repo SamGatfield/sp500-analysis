@@ -13,22 +13,26 @@ from indicators import sma_indicator,rsi_indicator, macd_indicator
 df = read_csv("data/sp 500.csv")
 
 
-# Check for duplicates
+
 
 no_of_rows = len(df.index)
 
 #print(no_of_rows)
+
+# Check for duplicates
 
 for i in range (0, no_of_rows):
     if df.duplicated()[i] == True:
         df.drop_duplicates(inplace = True)
     else:
         continue
-    
+
 #print(df.head())
 
 
 # PLOTTING
+
+# Creating my own style
 
 mc = mpf.make_marketcolors(up="lime", down="r", inherit=True)
 my_style = mpf.make_mpf_style(base_mpf_style="nightclouds", marketcolors=mc)
@@ -58,7 +62,7 @@ overbought_days = 0
 oversold_days = 0
 normal_days = 0
 
-for date, rsi, label in signals:
+for date, rsi, label in signals:  # Noting which days the SP500 was oversold, overbought etc.
     if label == "overbought":
         overbought_days += 1
     elif label == "oversold":
@@ -70,6 +74,8 @@ print(f"The total overbought days were: {overbought_days}"
       f"\nThe total oversold days were: {oversold_days}"
       f"\nThe total normal days were: {normal_days}"
       )
+
+# Letting the user decide whether they want to see all days
 
 check = input("If you would like to see all dates where SP500 was overbought, oversold and normal, type y: ")
 if check.lower() == "y":

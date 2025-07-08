@@ -1,6 +1,6 @@
 import pandas as pd
 
-def read_csv(csv):
+def read_csv(csv): # Takes in the csv, reads and cleans it accordingly
     df = pd.read_csv(csv)
 
     df.drop("Adj Close", axis=1, inplace=True)
@@ -11,6 +11,7 @@ def read_csv(csv):
     # Change the format of the date
         if column == "Date":
             df[column] = pd.to_datetime(df[column])
+            df.set_index(column, inplace=True)
 
         # Change datatypes of remaining columns (except date)
         else:
