@@ -1,6 +1,8 @@
 import pandas as pd 
 import mplfinance as mpf
 
+from load_data import read_csv
+
 from plotting import candle_plot
 
 from database import save_to_db, rsi_signals, check_rsi_range
@@ -8,7 +10,8 @@ from database import save_to_db, rsi_signals, check_rsi_range
 from indicators import sma_indicator,rsi_indicator, macd_indicator
 
 
-df = pd.read_csv("data/sp 500.csv")
+df = read_csv("data/sp 500.csv")
+
 
 # Check for duplicates
 
@@ -21,24 +24,7 @@ for i in range (0, no_of_rows):
         df.drop_duplicates(inplace = True)
     else:
         continue
-
-
-# Remove unwanted column
-df.drop("Adj Close", axis=1, inplace=True)
-
-columns = list(df)
-
-for column in columns[:]:
-
-    # Change the format of the date
-    if column == "Date":
-        df[column] = pd.to_datetime(df[column])
-
-    # Change datatypes of remaining columns (except date)
-    else:
-        df[column] = df[column].str.replace(",","",regex=False).astype(float)
-
-
+    
 #print(df.head())
 
 
@@ -85,7 +71,7 @@ print(f"The total overbought days were: {overbought_days}"
       f"\nThe total normal days were: {normal_days}"
       )
 
-check = input("If you would like to see the dates where SP500 was overbought, oversold and normal, type y: ")
+check = input("If you would like to see all dates where SP500 was overbought, oversold and normal, type y: ")
 if check.lower() == "y":
     for date, rsi, label in signals:
         print(f"On {date}, the SP500 was {label} (RSI = {rsi})")

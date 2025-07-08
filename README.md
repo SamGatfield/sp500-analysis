@@ -10,3 +10,4 @@ In this project, I analyse data from the SP500 from 1985 to 2022 through using a
 - Pandas 
 - Matplotlib 
 - MplFinance
+- Streamlit
