@@ -15,6 +15,7 @@ macd_indicator(df)
 st.title("S&P 500 Dashboard")
 
 
+
 df["Date"] = pd.to_datetime(df["Date"], format="%Y-%m-%d")
 df.set_index("Date", inplace=True)
 

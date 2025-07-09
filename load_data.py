@@ -11,7 +11,6 @@ def read_csv(csv): # Takes in the csv, reads and cleans it accordingly
     # Change the format of the date
         if column == "Date":
             df[column] = pd.to_datetime(df[column])
-            df.set_index(column, inplace=True)
 
         # Change datatypes of remaining columns (except date)
         else:
